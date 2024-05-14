@@ -3,8 +3,6 @@ package com.rdr.sglserverjava.services;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.rdr.sglserverjava.dtos.CidadeDto;

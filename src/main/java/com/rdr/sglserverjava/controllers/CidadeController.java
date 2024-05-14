@@ -4,15 +4,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rdr.sglserverjava.dtos.CidadeDto;
 import com.rdr.sglserverjava.models.CidadeModel;
-import com.rdr.sglserverjava.repositories.CidadeRepository;
 import com.rdr.sglserverjava.services.CidadeService;
-
-import ch.qos.logback.core.joran.util.beans.BeanUtil;
 import jakarta.validation.Valid;
-
 import java.util.List;
-
-import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
