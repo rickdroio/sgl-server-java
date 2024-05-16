@@ -7,29 +7,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "usuarios")
+@IdClass(KeyModel.class)
 public class UsuarioModel implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID idUsuario;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
-/*     @Id
-    private UUID idTenant; */
+    @Id
+    private int tenantId;
 
     private String nome;
     private String email;
     private String password;   
 
-    public UUID getIdUsuario() {
-        return idUsuario;
-    }
-    public void setIdUsuario(UUID idUsuario) {
-        this.idUsuario = idUsuario;
-    }
     public String getNome() {
         return nome;
     }
@@ -48,5 +44,18 @@ public class UsuarioModel implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public UUID getId() {
+        return id;
+    }
+    public void setId(UUID id) {
+        this.id = id;
+    }
+    public int getTenantId() {
+        return tenantId;
+    }
+    public void setTenantId(int tenantId) {
+        this.tenantId = tenantId;
+    }    
   
 }

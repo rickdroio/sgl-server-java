@@ -20,6 +20,10 @@ public class UsuarioAuth implements UserDetails {
         return null;
     }
 
+    public int getTenantId() {
+        return usuario.getTenantId();
+    }
+
     @Override
     public String getPassword() {
         return usuario.getPassword();

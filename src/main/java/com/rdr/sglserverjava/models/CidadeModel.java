@@ -7,29 +7,37 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "cidades")
-public class CidadeModel implements Serializable{
-    private static final long serialVersionOnUID = 1L;
+@IdClass(KeyModel.class)
+public class CidadeModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID idCidade;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @Id
+    private int tenantId;
+    
+    public UUID getId() {
+        return id;
+    }
+    public void setId(UUID id) {
+        this.id = id;
+    }
+    public int getTenantId() {
+        return tenantId;
+    }
+    public void setTenantId(int tenantId) {
+        this.tenantId = tenantId;
+    }
     private String nome;
     private String uf;
     private String ibge;
 
-    public static long getSerialversiononuid() {
-        return serialVersionOnUID;
-    }    
-    public UUID getIdCidade() {
-        return idCidade;
-    }
-    public void setIdCidade(UUID idCidade) {
-        this.idCidade = idCidade;
-    }
     public String getNome() {
         return nome;
     }
@@ -48,5 +56,7 @@ public class CidadeModel implements Serializable{
     public void setIbge(String ibge) {
         this.ibge = ibge;
     }
+
+
     
 }

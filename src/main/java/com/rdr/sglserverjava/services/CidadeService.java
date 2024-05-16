@@ -3,6 +3,10 @@ package com.rdr.sglserverjava.services;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.rdr.sglserverjava.dtos.CidadeDto;
@@ -24,8 +28,8 @@ public class CidadeService {
         return cidadeRepository.save(cidadeModel);
     }
 
-    public List<CidadeModel> findAll() {
-        return cidadeRepository.findAll();
+    public Page<CidadeModel> findAllPagination(int offset, int pageSize) {
+        return cidadeRepository.findAll(PageRequest.of(offset, pageSize));
     }
     
 }
