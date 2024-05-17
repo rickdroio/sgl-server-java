@@ -1,17 +1,14 @@
 package com.rdr.sglserverjava.services;
 
-import java.util.List;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.rdr.sglserverjava.dtos.CidadeDto;
 import com.rdr.sglserverjava.models.CidadeModel;
 import com.rdr.sglserverjava.repositories.CidadeRepository;
+import com.rdr.sglserverjava.security.TenantContext;
 
 @Service
 public class CidadeService {
@@ -25,6 +22,9 @@ public class CidadeService {
     public CidadeModel save(CidadeDto cidadeDto) {
         var cidadeModel = new CidadeModel();
         BeanUtils.copyProperties(cidadeDto, cidadeModel);
+
+        cidadeModel.setTenantId(TenantContext.getTenantId());
+
         return cidadeRepository.save(cidadeModel);
     }
 

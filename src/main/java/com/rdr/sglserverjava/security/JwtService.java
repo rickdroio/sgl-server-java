@@ -23,7 +23,7 @@ public class JwtService {
 
         UsuarioAuth usuarioAuth = (UsuarioAuth) authentication.getPrincipal();
 
-        System.out.println(usuarioAuth.getTenantId());
+        //System.out.println(usuarioAuth.getTenantId());
 
 /*         String scopes = authentication.getAuthorities().stream()
             .map(GrantedAuthority::getAuthority)
@@ -34,12 +34,12 @@ public class JwtService {
             .issuedAt(now)
             .expiresAt(now.plusSeconds(expire))
             .subject(authentication.getName())
-            .claim("tenantid", 666)
+            .claim("tenantId", usuarioAuth.getTenantId())
             .build();
 
         String jsonToken = new Gson().toJson(encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue());
         
         return jsonToken;
-    }   
+    } 
     
 }

@@ -1,7 +1,8 @@
 package com.rdr.sglserverjava.repositories;
 
 import java.util.Optional;
-import java.util.UUID;
+
+import org.hibernate.validator.constraints.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.rdr.sglserverjava.models.UsuarioModel;

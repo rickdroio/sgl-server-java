@@ -11,8 +11,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.oauth2.jwt.JwtException;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -30,6 +32,7 @@ public class SecurityConfig {
     private RSAPublicKey key;
     @Value("${jwt.private.key}")
     private RSAPrivateKey priv;
+   
    
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception{       
@@ -49,7 +52,23 @@ public class SecurityConfig {
 
     @Bean
     JwtDecoder jwtDecoder() {
-        return NimbusJwtDecoder.withPublicKey(key).build();
+        //return NimbusJwtDecoder.withPublicKey(key).build();
+        //JwtDecoder jwtDecoder = NimbusJwtDecoder.withJwkSetUri(issuerUri).build();
+        JwtDecoder jwtDecoder = NimbusJwtDecoder.withPublicKey(key).build();
+
+        return new JwtDecoder() {
+            @Override
+            public Jwt decode(String token) throws JwtException {
+                //System.out.println("token: " + token);
+                Jwt jwt = jwtDecoder.decode(token);
+                //System.out.println("jwt: " + jwt);
+
+                //intercepts JWT to get values
+                TenantContext.setTenantId(Integer.valueOf(jwt.getClaimAsString("tenantId")));
+
+                return jwt;
+            }
+        };        
     }
 
     @Bean
