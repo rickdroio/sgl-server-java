@@ -3,7 +3,7 @@ package com.rdr.sglserverjava.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rdr.sglserverjava.dtos.UsuarioDto;
-import com.rdr.sglserverjava.models.UsuarioModel;
+import com.rdr.sglserverjava.models.Usuario;
 import com.rdr.sglserverjava.services.UsuarioService;
 
 import jakarta.validation.Valid;
@@ -25,7 +25,7 @@ public class UsuarioController {
     }
     
     @PostMapping()
-    public ResponseEntity<UsuarioModel> save(@RequestBody @Valid UsuarioDto usuarioDto) {
+    public ResponseEntity<Usuario> save(@RequestBody @Valid UsuarioDto usuarioDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.newUser(usuarioDto));
     }
     

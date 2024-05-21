@@ -64,7 +64,7 @@ public class SecurityConfig {
                 //System.out.println("jwt: " + jwt);
 
                 //intercepts JWT to get values
-                TenantContext.setTenantId(Integer.valueOf(jwt.getClaimAsString("tenantId")));
+                TenantContext.setTenantId(Long.valueOf(jwt.getClaimAsString("tenantId")));
 
                 return jwt;
             }

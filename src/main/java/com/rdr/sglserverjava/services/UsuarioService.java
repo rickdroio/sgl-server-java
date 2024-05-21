@@ -5,7 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.rdr.sglserverjava.dtos.UsuarioDto;
-import com.rdr.sglserverjava.models.UsuarioModel;
+import com.rdr.sglserverjava.models.Usuario;
 import com.rdr.sglserverjava.repositories.UsuarioRepository;
 
 @Service
@@ -19,11 +19,11 @@ public class UsuarioService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UsuarioModel newUser(UsuarioDto usuarioDto) {
-        var usuarioModel = new UsuarioModel();
+    public Usuario newUser(UsuarioDto usuarioDto) {
+        var usuarioModel = new Usuario();
         BeanUtils.copyProperties(usuarioDto, usuarioModel);
 
-        usuarioModel.setPassword(passwordEncoder.encode(usuarioDto.password()));
+        usuarioModel.setPassword(passwordEncoder.encode(usuarioDto.password()));        
 
         return usuarioRepository.save(usuarioModel);
     }    

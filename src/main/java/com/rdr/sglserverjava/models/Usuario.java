@@ -13,14 +13,14 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "usuarios")
 @IdClass(KeyModel.class)
-public class UsuarioModel implements Serializable{
+public class Usuario implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
     @Id
-    private int tenantId;
+    private Long tenantId;
 
     private String nome;
     private String email;
@@ -45,16 +45,16 @@ public class UsuarioModel implements Serializable{
         this.password = password;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    public int getTenantId() {
+    public Long getTenantId() {
         return tenantId;
     }
-    public void setTenantId(int tenantId) {
+    public void setTenantId(Long tenantId) {
         this.tenantId = tenantId;
     }    
   

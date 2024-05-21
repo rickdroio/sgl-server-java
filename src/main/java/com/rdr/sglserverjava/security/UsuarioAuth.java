@@ -5,12 +5,12 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.rdr.sglserverjava.models.UsuarioModel;
+import com.rdr.sglserverjava.models.Usuario;
 
 public class UsuarioAuth implements UserDetails {
-    private final UsuarioModel usuario;
+    private final Usuario usuario;
 
-    public UsuarioAuth(UsuarioModel usuario) {
+    public UsuarioAuth(Usuario usuario) {
         this.usuario = usuario;
     }
 
@@ -20,7 +20,7 @@ public class UsuarioAuth implements UserDetails {
         return null;
     }
 
-    public int getTenantId() {
+    public Long getTenantId() {
         return usuario.getTenantId();
     }
 

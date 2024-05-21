@@ -1,7 +1,6 @@
 package com.rdr.sglserverjava.models;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,25 +12,25 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "cidades")
 @IdClass(KeyModel.class)
-public class CidadeModel implements Serializable {
+public class Cidade implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
     @Id
-    private int tenantId;
+    private Long tenantId;
     
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    public int getTenantId() {
+    public Long getTenantId() {
         return tenantId;
     }
-    public void setTenantId(int tenantId) {
+    public void setTenantId(Long tenantId) {
         this.tenantId = tenantId;
     }
     private String nome;
