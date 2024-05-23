@@ -1,4 +1,4 @@
-package com.rdr.sglserverjava.models;
+package com.rdr.sglserverjava.shared;
 
 import java.io.Serializable;
 

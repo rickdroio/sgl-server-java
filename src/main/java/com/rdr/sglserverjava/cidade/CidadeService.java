@@ -1,4 +1,4 @@
-package com.rdr.sglserverjava.services;
+package com.rdr.sglserverjava.cidade;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.rdr.sglserverjava.dtos.CidadeDto;
-import com.rdr.sglserverjava.models.Cidade;
-import com.rdr.sglserverjava.repositories.CidadeRepository;
 import com.rdr.sglserverjava.security.TenantContext;
 
 @Service
@@ -32,7 +29,7 @@ public class CidadeService {
     }
 
     public Page<Cidade> findAllPagination(int offset, int pageSize) {
-         return cidadeRepository.findByTenantId(
+         return cidadeRepository.findByTenantIdOrderByNome(
             TenantContext.getTenantId(),
             PageRequest.of(offset, pageSize)
         ); 

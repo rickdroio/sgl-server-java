@@ -1,4 +1,4 @@
-package com.rdr.sglserverjava.dtos;
+package com.rdr.sglserverjava.cidade;
 
 import jakarta.validation.constraints.NotBlank;
 

@@ -1,10 +1,7 @@
-package com.rdr.sglserverjava.controllers;
+package com.rdr.sglserverjava.cidade;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rdr.sglserverjava.dtos.CidadeDto;
-import com.rdr.sglserverjava.models.Cidade;
-import com.rdr.sglserverjava.services.CidadeService;
 import jakarta.validation.Valid;
 
 import java.util.List;
@@ -24,7 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequestMapping("/cidades")
 public class CidadeController {
 
-    CidadeService cidadeService;
+    private CidadeService cidadeService;
 
     public CidadeController(CidadeService cidadeService) {
         this.cidadeService = cidadeService;

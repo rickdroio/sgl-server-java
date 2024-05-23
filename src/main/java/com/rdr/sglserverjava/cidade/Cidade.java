@@ -1,27 +1,28 @@
-package com.rdr.sglserverjava.models;
+package com.rdr.sglserverjava.cidade;
 
-import java.io.Serializable;
+import com.rdr.sglserverjava.shared.BaseModel;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "cidades")
-@IdClass(KeyModel.class)
-public class Cidade implements Serializable {
+@Table(name = "cidades", uniqueConstraints = { @UniqueConstraint(columnNames = {"tenantId", "nome", "ibge"})})
+//@IdClass(KeyModel.class)
+public class Cidade extends BaseModel {
 
-    @Id
+/*     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Id
-    private Long tenantId;
+    private Long tenantId; */
+
+    //private String nome;
+    private String uf;
+    private String ibge;
     
-    public Long getId() {
+/*     public Long getId() {
         return id;
     }
     public void setId(Long id) {
@@ -32,17 +33,15 @@ public class Cidade implements Serializable {
     }
     public void setTenantId(Long tenantId) {
         this.tenantId = tenantId;
-    }
-    private String nome;
-    private String uf;
-    private String ibge;
+    } */
 
-    public String getNome() {
+
+/*     public String getNome() {
         return nome;
     }
     public void setNome(String nome) {
         this.nome = nome;
-    }
+    } */
     public String getUf() {
         return uf;
     }
