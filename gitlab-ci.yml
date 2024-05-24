@@ -1,0 +1,8 @@
+stages:
+  - test
+  - deploy
+
+
+test-all:
+  stage: test
+  

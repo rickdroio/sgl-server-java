@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.MappedSuperclass;
 
-
 @MappedSuperclass
 @IdClass(KeyModel.class)
 public class BaseModel implements Serializable{
